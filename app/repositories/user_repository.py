@@ -2,7 +2,7 @@ from app.core.config import settings
 from app.models import User
 from app.repositories.json_repository import JsonRepository
 
-
+#new class
 class UserRepository:
     def __init__(self):
         self._repo = JsonRepository[User](settings.data_file, "users")
