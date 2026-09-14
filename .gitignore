@@ -19,6 +19,7 @@ credentials.json
 # OS
 .DS_Store
 
+
 # Test / coverage
 .pytest_cache/
 .coverage
