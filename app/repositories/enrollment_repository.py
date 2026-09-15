@@ -1,20 +1,16 @@
 from __future__ import annotations
 
 from app.core.config import settings
+from app.models import Enrollment
 from app.repositories.json_repository import JsonRepository
-from app.models.entities import Enrollment
+
 
 class EnrollmentRepository:
     def __init__(self):
         self._repo = JsonRepository[Enrollment](settings.data_file, "enrollments")
 
     def list(self) -> list[Enrollment]:
-        return [
-            Enrollment.from_dict(item.to_dict())
-            if isinstance(item, Enrollment)
-            else Enrollment.from_dict(item)
-            for item in self._repo.list()
-        ]
+        return [Enrollment.from_dict(item) for item in self._repo.list()]
 
     def find(self, student_id: str, course_id: str) -> Enrollment | None:
         return next(
